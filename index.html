@@ -13,7 +13,9 @@
         .red-btn { background: #d9534f; }
         .blue-btn { background: #0056b3; }
         .btn-small { height: 70px; font-size: 1.8rem; opacity: 0.7; }
-        .btn-large { height: 135px; font-size: 2.8rem; }
+        .btn-large { height: 150px; font-size: 2.8rem; }
+        /* TẠO NÚT XOAY TO GẤP ĐÔI ĐỂ LẤP KHOẢNG TRỐNG CỦA NÚT 4 VÀ 6 CŨ */
+        .btn-xlarge { height: 250px; font-size: 3rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .locked { opacity: 0.1 !important; pointer-events: none; }
         #status-bar { background: #000; padding: 10px; font-size: 1.2rem; display: flex; justify-content: space-around; border-bottom: 2px solid #333; }
         
@@ -52,11 +54,8 @@
         <button class="red-btn btn-large score-btn" onclick="sendHit('r3')">R +3</button>
         <button class="blue-btn btn-large score-btn" onclick="sendHit('b3')">B +3</button>
 
-        <button class="red-btn btn-large score-btn" onclick="sendHit('r4')">R +4</button>
-        <button class="blue-btn btn-large score-btn" onclick="sendHit('b4')">B +4</button>
-
-        <button class="red-btn btn-large score-btn" onclick="sendHit('r6')">R +6</button>
-        <button class="blue-btn btn-large score-btn" onclick="sendHit('b6')">B +6</button>
+        <button class="red-btn btn-xlarge score-btn" style="background: #a91212;" onclick="sendHit('rX')">R XOAY</button>
+        <button class="blue-btn btn-xlarge score-btn" style="background: #00377a;" onclick="sendHit('bX')">B XOAY</button>
         
         <button style="grid-column: span 2; background:#333; height: 50px;" onclick="location.reload()">ĐỔI VAI TRÒ</button>
     </div>
@@ -149,6 +148,7 @@
             });
         }
 
+        // GỬI TÍN HIỆU ĐIỂM HOẶC TÍN HIỆU XOAY (rX, bX)
         function sendHit(type) {
             if (!isRunning) return;
             db.ref('hits').push({ 
